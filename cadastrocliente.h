@@ -4,22 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <locale.h>
+#include "cliente.h"
 
-struct tEndereco {
-    char rua[50];
-    int numero;
-    int cep;
-
-};
-typedef struct tEndereco ender;
-
-struct tCliente {
-    int codigo;
-    char nome[50];
-    char telefone[12];
-    ender endereco;
-};
 typedef struct tCliente cliente;
 
 int gerarCodigoCliente(void){
