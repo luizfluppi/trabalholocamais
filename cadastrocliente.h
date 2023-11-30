@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include "cliente.h"
+#include "validacao.h"
 
 typedef struct tCliente cliente;
 
@@ -56,22 +57,47 @@ void cadastrarCliente(FILE *f){
 
     */
 
-    char temp[30]; 
+    char temp[9]; 
     
     cliente c;
 
     printf("Digite o nome do cliente: ");
-    fgets(c.nome,50,stdin);
+    fgets(c.nome,strlen(c.nome),stdin);
+    while (temSoLetra(c.nome) != 0){
+        printf("Nome inválido! O nome não pode ter mais de 50 caracteres nem conter caracteres não-alfabéticos.");
+        printf("Digite o nome do cliente: ");
+        fgets(c.nome,50,stdin);
+    }
+
     printf("Digite o número de telefone do cliente: ");
-    fgets(c.telefone,12,stdin);
+    fgets(c.telefone,strlen(c.telefone),stdin);
+    while ((atoi(c.telefone) == 0) || (strlen(c.telefone) < 11)){
+        printf("Número inválido! Digite um número com DDD, sem símbolos ou espaços.");
+        printf("Digite o número de telefone do cliente: ");
+        fgets(c.telefone,strlen(c.telefone),stdin);
+    }
+
     printf("Digite o endereço do cliente:\n");
+
     printf("Rua: ");
-    fgets(c.endereco.rua,50,stdin);
+    fgets(c.endereco.rua,sizeof(c.endereco.rua),stdin);
+
     printf("Número: ");
     fgets(temp,sizeof(temp),stdin);
+    while (atoi(temp) == 0){
+        printf("Número inválido! Digite apenas caracteres numéricos.");
+        printf("Número: ");
+        fgets(temp,sizeof(temp),stdin);
+    }
     c.endereco.numero = atoi(temp);
+
     printf("CEP: ");
-    fgets(temp,sizeof(temp),stdin);
+    fgets(temp,9,stdin);
+    while ((atoi(temp) == 0)){
+        printf("CEP inválido! Digite um CEP de 8 dígitos, sem hífen.");
+        printf("CEP: ");
+        fgets(temp,9,stdin);
+    }
     c.endereco.cep = atoi(temp);
     
     c.codigo = gerarCodigoCliente();
