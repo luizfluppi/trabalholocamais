@@ -5,13 +5,7 @@
 #include <stdlib.h>
 #include "cadastrocliente.h"
 #include "ProcurarCodigo.h"
-
-void limparBuffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF) {
-        
-    }
-}
+#include "validacao.h"
 
 int main(){
     setlocale(LC_ALL,"Portuguese");

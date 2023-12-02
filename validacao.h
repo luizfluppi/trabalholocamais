@@ -6,6 +6,13 @@
 #include <locale.h>
 #include <ctype.h>
 
+void limparBuffer(void){
+    int c;
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
+}
+
 int temSoLetra(char *string){
     /*
         Verifica se uma string contém algum caractere que não faz parte

@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "validacao.h"
 #include "cliente.h"
 
 typedef struct tCliente cliente;
