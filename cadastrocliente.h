@@ -62,19 +62,26 @@ void cadastrarCliente(FILE *f){
     cliente c;
 
     printf("Digite o nome do cliente: ");
-    fgets(c.nome,strlen(c.nome),stdin);
+    scanf("%s",&c.nome);
+    
     while (temSoLetra(c.nome) != 0){
-        printf("Nome inválido! O nome não pode ter mais de 50 caracteres nem conter caracteres não-alfabéticos.");
+        limparBuffer();
+        printf("Nome inválido! O nome não pode ter mais de 50 caracteres nem conter caracteres não-alfabéticos.\n");
         printf("Digite o nome do cliente: ");
-        fgets(c.nome,50,stdin);
+        scanf("%s",&c.nome);
     }
 
+    limparBuffer();
+
     printf("Digite o número de telefone do cliente: ");
-    fgets(c.telefone,strlen(c.telefone),stdin);
+    scanf("%s",&c.telefone);
+    limparBuffer();
+    
     while ((atoi(c.telefone) == 0) || (strlen(c.telefone) < 11)){
-        printf("Número inválido! Digite um número com DDD, sem símbolos ou espaços.");
+        printf("Número inválido! Digite um número com DDD, sem símbolos ou espaços.\n");
         printf("Digite o número de telefone do cliente: ");
-        fgets(c.telefone,strlen(c.telefone),stdin);
+        scanf("%s",&c.telefone);
+        limparBuffer();
     }
 
     printf("Digite o endereço do cliente:\n");
@@ -84,8 +91,9 @@ void cadastrarCliente(FILE *f){
 
     printf("Número: ");
     fgets(temp,sizeof(temp),stdin);
+
     while (atoi(temp) == 0){
-        printf("Número inválido! Digite apenas caracteres numéricos.");
+        printf("Número inválido! Digite apenas caracteres numéricos.\n");
         printf("Número: ");
         fgets(temp,sizeof(temp),stdin);
     }
@@ -93,8 +101,9 @@ void cadastrarCliente(FILE *f){
 
     printf("CEP: ");
     fgets(temp,9,stdin);
+
     while ((atoi(temp) == 0)){
-        printf("CEP inválido! Digite um CEP de 8 dígitos, sem hífen.");
+        printf("CEP inválido! Digite um CEP de 8 dígitos, sem hífen.\n");
         printf("CEP: ");
         fgets(temp,9,stdin);
     }
@@ -113,7 +122,7 @@ void cadastrarCliente(FILE *f){
     fwrite(&c,sizeof(c),1,f);
     fflush(f);
 
-    printf("Cliente de código %i cadastrado com sucesso!",c.codigo);
+    printf("\nCliente de código %i cadastrado com sucesso!\n",c.codigo);
 }
 
 #endif // CADASTROCLIENTE_H_INCLUDED

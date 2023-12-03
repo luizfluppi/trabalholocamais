@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include "cadastrocliente.h"
 #include "ProcurarCodigo.h"
-#include "validacao.h"
 
 int main(){
     setlocale(LC_ALL,"Portuguese");

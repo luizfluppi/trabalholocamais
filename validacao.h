@@ -6,7 +6,7 @@
 #include <locale.h>
 #include <ctype.h>
 
-void limparBuffer(void){
+void limparBuffer(){
     int c;
     do {
         c = getchar();
@@ -29,7 +29,7 @@ int temSoLetra(char *string){
     */
     setlocale(LC_ALL,"Portuguese");
 
-    for (int i = 0; i < strlen(string); i++){
+    for (int i = 0; string[i] != '\0' ; i++){
         if (isalpha(string[i]) == 0){
             return 1;
         }
