@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include <locale.h>
+#include "validacao.h"
 #include "veiculo.h"
 
 typedef struct tVeiculo veiculo;
@@ -34,24 +35,7 @@ int buscarCodigoVeiculo(FILE *f, int codigo){
     return 0;
 }
 
-int buscarPeriodoVeiculo(FILE *f, char *dataretirada, char *datadevolucao){
-    veiculo v;
-
-    fseek(f,0,SEEK_SET);
-
-    while (!feof(f)){
-        fread(&v,sizeof(v),1,f);
-
-        if (v.dataretirada == dataretirada && v.datadevolucao == datadevolucao){
-            return 1;
-        }
-    }
-
-    return 0;
-}
-
-
-void cadastrarCliente(FILE *f){
+void cadastrarVeiculo(FILE *f){
     setlocale(LC_ALL, "");
     char temp[30];
     
@@ -59,27 +43,32 @@ void cadastrarCliente(FILE *f){
 
     printf("Digite a descrição do veículo: ");
     fgets(v.descricao,100,stdin);
+    
     printf("Digite o modelo do veículo: ");
     fgets(v.modelo,50,stdin);
+    
     printf("Digite a cor do veículo: ");
     fgets(v.cor,50,stdin);
+    
     printf("Digite a placa do veículo: ");
     fgets(v.placa,15,stdin);
-    printf("Digite a data de retirada do veículo: ");
-    fgets(v.dataretirada,15,stdin);
-    printf("Digite a data de devolução do veículo: ");
-    fgets(v.datadevolucao,15,stdin);
-    printf("Digite o status do veículo, tem que ser alugado, disponível ou em manutenção: ");
-    fgets(v.status,50,stdin);
-    printf("Digite o valor do veículo: ");
+    
+    printf("Digite o status do veículo: \n");
+    printf("A - Alugado\n");
+    printf("D - Disponível\n");
+    printf("M - Em manutenção\n");
+
+    scanf("%c",&v.status);
+    limparBuffer();
+
+    printf("Digite o valor da diária do veículo: ");
     fgets(temp,sizeof(temp),stdin);
     v.valor = atof(temp);
+    
     printf("Digite o número de ocupantes do veículo: ");
     fgets(temp,sizeof(temp),stdin);
     v.ocupantes = atoi(temp);
 
-    buscarPeriodoVeiculo(f, v.dataretirada, v.datadevolucao);
-    
     v.codigo = gerarCodigoVeiculo();
 
     while (buscarCodigoVeiculo(f,v.codigo) != 0){ 

@@ -7,11 +7,9 @@ struct tVeiculo {
     char modelo[50];
     char cor[50];
     char placa[15];
-    char dataretirada[15];
-    char datadevolucao[15];
     float valor;
     int ocupantes;
-    char status[50];
+    char status;
 };
 
 #endif // VEICULO_H_INCLUDED
