@@ -36,7 +36,6 @@ int buscarCodigoVeiculo(FILE *f, int codigo){
 }
 
 void cadastrarVeiculo(FILE *f){
-    setlocale(LC_ALL, "");
     char temp[30];
     
     veiculo v;
@@ -79,7 +78,7 @@ void cadastrarVeiculo(FILE *f){
     fwrite(&v,sizeof(v),1,f);
     fflush(f);
 
-    printf("Veículo de código %i cadastrado com sucesso!",v.codigo);
+    printf("Veículo de código %i cadastrado com sucesso!\n\n",v.codigo);
 }
 
 #endif // CADASTROVEICULO_H_INCLUDED

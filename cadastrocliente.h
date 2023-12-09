@@ -122,7 +122,7 @@ void cadastrarCliente(FILE *f){
     fwrite(&c,sizeof(c),1,f);
     fflush(f);
 
-    printf("\nCliente de código %i cadastrado com sucesso!\n",c.codigo);
+    printf("\nCliente de código %i cadastrado com sucesso!\n\n",c.codigo);
 }
 
 #endif // CADASTROCLIENTE_H_INCLUDED

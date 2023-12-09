@@ -5,6 +5,7 @@
 #include <string.h>
 #include <locale.h>
 #include <ctype.h>
+#include "locacao.h"
 
 void limparBuffer(){
     int c;
@@ -38,4 +39,26 @@ int temSoLetra(char *string){
     return 0;
 }
 
+int validaCodigoVeiculo(FILE *arqVeiculo, int codigo){
+    /*
+    
+    */
+   
+   veiculo v;
+
+   while (!feof(arqVeiculo)){
+        fread(&v,sizeof(v),1,arqVeiculo);
+
+        if (v.codigo == codigo){
+            if (v.status == 'D'){
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+    }
+
+    return -1;
+}
 #endif //VALIDACAO_H_INCLUDED
