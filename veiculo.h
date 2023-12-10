@@ -77,6 +77,19 @@ void cadastrarVeiculo(FILE *f){
 }
 
 void CarroCliente(FILE *f){
+    /*
+    Descricao: O procedimento tem como objetivo de achar
+      as caracteristicas do seu carro atraves de um codigo
+      de carro e seus status.
+    Entrada:
+       parametros:
+       int Codigo: O codigo que quer ser procurado;
+    Saida:
+        Informações do struct Veiculo;
+    Error:
+        Escrever Codigo não encontrado.
+    */
+
     int codigo;
     veiculo v;
     printf("Digite o codigo a seguir...\n");

@@ -21,7 +21,20 @@ int gerarCodigoCliente(void){
 }
 
 void buscarCodigoCliente(FILE *f){
+    /*
+    Descricao: O procedimento tem como objetivo de achar o cliente e
+     verificar se deu positiva na locadora ou não, com alguns do 
+     seus dados.
+    Entrada:
+     Parametros:
+       int Codigo: O codigo que quer ser procurado;
+       Saida:
+        Informações do struct do cliente e do endereço;
+        Error:
+        Escrever Codigo não encontrado.
+    */
     int codigo;
+    int resultados = 0;
     cliente c;
     
     printf("Digite o codigo a seguir...\n");
@@ -33,7 +46,8 @@ void buscarCodigoCliente(FILE *f){
     {
      //acho o codigo
         if (c.codigo == codigo)
-        {
+        {   
+            resultados++;
             printf("Codigo: %d\n",c.codigo);
             printf("Nome: %s\n",c.nome);
             printf("Telefone: %s\n",c.telefone);
@@ -41,6 +55,9 @@ void buscarCodigoCliente(FILE *f){
             printf("Numero de casa: %d\n",c.endereco.numero);
             printf("CEP: %s\n",c.endereco.cep);
         }
+    }
+    if (resultados < 1){
+        printf("Codigo nao encontrado\n");
     }
 
 }
