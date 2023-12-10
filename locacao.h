@@ -20,7 +20,15 @@ typedef struct tLocacao locacao;
 
 int temVeiculosDisponiveis(FILE *arqVeiculos, int capacidade){
     /*
-    
+        Função que determina se existem veículos disponíveis que atendem o número de passageiros desejado
+
+        Parâmetros:
+            FILE *arqVeiculos: Arquivo onde se encontra o cadastro dos veículos
+            int capacidade: número de passageiros desejado
+
+        Retorno:
+            Caso exista pelo menos um veículo que atende os critérios: 1
+            Caso contrário: 0
     */
 
     veiculo v;
@@ -40,7 +48,11 @@ int temVeiculosDisponiveis(FILE *arqVeiculos, int capacidade){
 
 void exibeVeiculosDisponiveis(FILE *arqVeiculos, int capacidade){
     /*
-    
+        Função que exibe na tela a lista dos veículos disponíveis que atendem a capacidade de passageiros desejada
+
+        Parâmetros:
+            FILE *arqVeiculos: Arquivo onde se encontra o cadastro dos veículos
+            int capacidade: número de passageiros desejado
     */
 
     veiculo v;
@@ -62,7 +74,14 @@ void exibeVeiculosDisponiveis(FILE *arqVeiculos, int capacidade){
     }
 }
 void atualizaStatusVeiculo(FILE *arqVeiculos, int codigo, char status){
-
+    /*
+        Função que atualiza o status de um veículo
+        
+        Parâmetros:
+            FILE *arqVeiculos: Arquivo onde se encontra o cadastro dos veículos
+            int codigo: código do veículo cujo status será alterado
+            char status: o status novo do veículo, representado por um caractere
+    */
     veiculo v;
 
     fseek(arqVeiculos,0,SEEK_SET);
@@ -77,6 +96,16 @@ void atualizaStatusVeiculo(FILE *arqVeiculos, int codigo, char status){
 }
 
 float calcValorTotal(FILE *arqVeiculos, locacao l){
+    /*
+        Função que calcula o vator total de uma locação
+
+        Parâmetros:
+            FILE *arqVeiculos: arquivo onde se encontra o cadastro dos veículos
+            locacao l: estrutura de dados contendo dados sobre a locação cujo valor será calculado
+
+        Retorno:
+            float valor: valor total da locação
+    */
     veiculo v;
 
     float valor = 0;
@@ -99,6 +128,7 @@ void cadastraLocacao(FILE *arqLocacao, FILE *arqClientes, FILE *arqVeiculos){
 
     FILE *arqLocacao: O arquivo onde será salvo o cadastro da locação
     FILE *arqClientes: O arquivo onde se encontra o cadastro do cliente
+    FILE *arqVeiculos: O arquivo onde se encontra o cadastro dos veículos
     */
 
     int ocupantes = 0;
@@ -193,6 +223,13 @@ void cadastraLocacao(FILE *arqLocacao, FILE *arqClientes, FILE *arqVeiculos){
 }
 
 void buscaLocacao(FILE *arqLocacao, int codigo){
+    /*
+        Função que exibe as locações de um determinado cliente pelo seu código
+
+        Parâmetros:
+            FILE *arqLocacao: o arquivo onde se encontram as locações
+            int codigo: O código do cliente
+    */
     locacao l;
     int contadorLocacoes = 0;
 

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "validacao.h"
 #include "estruturas.h"
 
 typedef struct tCliente cliente;

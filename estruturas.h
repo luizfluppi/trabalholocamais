@@ -19,6 +19,8 @@ struct tCliente {
     int codigo;
     char nome[50];
     char telefone[12];
+    int pontosfidelidade;
+    char kitLocaMais[10];
     struct tEndereco endereco;
 };
 typedef struct tCliente cliente;

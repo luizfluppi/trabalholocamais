@@ -84,7 +84,7 @@ void CarroCliente(FILE *f){
     limparBuffer();
     //limpar o buffer.
     fseek(f,0,SEEK_SET);
-    while(fread(&v,sizeof(v),1,v) == 1)
+    while(fread(&v,sizeof(v),1,f) == 1)
     {
      if (v.codigo == codigo)
      {
@@ -104,5 +104,27 @@ void CarroCliente(FILE *f){
     }
 }
 
+void ConfirmacaoDeMudanca(FILE *f,int codigo)
+{
+  int Confirmacao;
+  veiculo v;
+  printf("Dar Baixo No Veiculo?\n");
+  printf("1.Sim\n");
+  printf("2.Nao\n");
+  scanf("%d",&Confirmacao);
+  limparBuffer();
+  while (Confirmacao != 1 || Confirmacao != 2)
+  {
+  if(Confirmacao == 1)
+  {
+   atualizaStatusVeiculo(f,codigo,'D');
+  }
+  else if (Confirmacao != 2)
+  {
+   printf("Numero Invalido...\n");
+  }
+  }
+
+}
 
 #endif // VEICULO_H_INCLUDED

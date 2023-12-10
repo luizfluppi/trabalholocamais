@@ -6,6 +6,7 @@
 #include "veiculo.h"
 #include "cliente.h"
 #include "locacao.h"
+#include "pontofidelidade.h"
 
 int main(){
     setlocale(LC_ALL,"pt_BR.utf8");
@@ -17,6 +18,7 @@ int main(){
 
     int opcao = 1;
     int codigoCliente = 0;
+    int codigoVeiculo = 0;
 
     while (opcao != 0){
         printf("1) Cadastrar cliente\n");
@@ -26,6 +28,7 @@ int main(){
         printf("5) Cadastrar veículo\n");
         printf("6) Buscar veículos\n");
         printf("7) Calcular pontos de fidelidade\n");
+        printf("8) Dar baixa em locação\n");
         printf("0) Sair\n");
         scanf("%i",&opcao);
         limparBuffer();
@@ -119,6 +122,23 @@ int main(){
 
                 fclose(veiculos);
 
+                break;
+            case 7:
+                adicionarPontosFidelidade(c.nome);
+                break;
+            case 8:
+                if ((veiculos = fopen("veiculos.dat","r+b")) == NULL){
+                    printf("Registro de veículos não encontrado!\n");
+                    break;
+                }
+
+                printf("Digite o código do veículo: ");
+                scanf("%i",&codigoVeiculo);
+                limparBuffer();
+
+                ConfirmacaoDeMudanca(veiculos,codigoVeiculo);
+
+                fclose(veiculos);
                 break;
             default:
                 printf("Opção inválida\n");
