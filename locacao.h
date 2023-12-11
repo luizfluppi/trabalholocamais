@@ -165,8 +165,8 @@ void cadastraLocacao(FILE *arqLocacao, FILE *arqClientes, FILE *arqVeiculos){
     while((validarData(l.dataDevolucao) != 0) || (comparaData(l.dataRetirada,l.dataDevolucao) != 2)){
         limparBuffer();
         printf("Data inválida! Verifique se a data foi digitada corretamente.\n");
-        printf("Digite a data de retirada desejada (formato d-m-aaaa): ");
-        scanf("%i %i %i",&l.dataRetirada.dia,&l.dataRetirada.mes,&l.dataRetirada.ano);
+        printf("Digite a data de devolução desejada (formato d-m-aaaa): ");
+        scanf("%i %i %i",&l.dataDevolucao.dia,&l.dataDevolucao.mes,&l.dataDevolucao.ano);
     }
     limparBuffer();
 

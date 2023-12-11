@@ -124,7 +124,7 @@ int main(){
 
                 break;
             case 7:
-                adicionarPontosFidelidade(c.nome);
+                //adicionarPontosFidelidade(c.nome);
                 break;
             case 8:
                 if ((veiculos = fopen("veiculos.dat","r+b")) == NULL){

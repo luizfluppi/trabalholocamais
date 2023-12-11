@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "estruturas.h"
+#include "locacao.h"
 #include "validacao.h"
 
 int gerarCodigoVeiculo(void){
@@ -108,7 +109,7 @@ void CarroCliente(FILE *f){
         printf("placa: %s\n",v.placa);
         printf("valor: %f\n",v.valor);
         printf("ocupantes: %d\n",v.ocupantes);
-        printf("status: %s\n",v.status);
+        printf("status: %c\n",v.status);
      }
      else
      {
